@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Manager</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-zinc-900 to-zinc-800 min-h-screen text-zinc-100 font-sans">
+  <div class="max-w-5xl mx-auto py-12 px-6">
+    
+    <!-- Header -->
+    <div class="text-center mb-10">
+      <h1 class="text-4xl font-bold text-indigo-400 tracking-tight">My Task Manager</h1>
+      <p class="text-zinc-400 mt-2">Plan your work, stay productive.</p>
+    </div>
+
+    <!-- Form Section -->
+    <div class="bg-zinc-800 p-6 rounded-lg shadow-md">
+      <form action="/create" method="POST" class="space-y-4">
+        <input class="block w-full px-5 py-3 bg-zinc-700 text-zinc-100 rounded-md placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          type="text" name="title" placeholder="Enter task title" required />
+
+        <textarea
+          class="block w-full px-5 py-3 bg-zinc-700 text-zinc-100 rounded-md resize-none placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          name="details" rows="4" placeholder="Write task details..."></textarea>
+
+        <input type="submit"
+          class="bg-indigo-600 hover:bg-indigo-500 transition-all px-6 py-2 rounded-md text-white cursor-pointer font-medium"
+          value="Create Task" />
+      </form>
+    </div>
+
+    <!-- Tasks Section -->
+    <div class="mt-12">
+      <h2 class="text-2xl font-semibold text-indigo-300 mb-4">Your Tasks</h2>
+
+      <div class="flex flex-wrap gap-6">
+        <% if (files.length > 0) { %>
+          <% files.forEach(function(val) { %>
+            <div class="w-72 bg-zinc-700 rounded-lg p-5 shadow-md hover:shadow-xl transition">
+              <h3 class="text-xl font-semibold text-white mb-2"><%= val %></h3>
+              <p class="text-zinc-400 text-sm mb-4 line-clamp-3"></p>
+              <a href="/file/<%= val %>" class="text-indigo-400 text-sm hover:underline" >Read more</a>
+            </div>
+          <% }) %>
+        <% } else { %>
+          <p class="text-zinc-400">No tasks yet. Start by adding one above!</p>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

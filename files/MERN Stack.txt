@@ -1,0 +1,9 @@
+</html>
+✨ Improvements:
+Gradient background for a modern dark look
+
+Input focus effects
+
+Clean spacing and better typography
+
+Scroll-friendly task cards with line-clamp-3 (optional Tailwind plugin)
